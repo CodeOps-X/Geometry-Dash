@@ -1,8 +1,31 @@
+showMobileControls(true, true, false, false);
+//Project
+//Visits
+prompt("Music is base after base.");
+getKeyValue("visits", function(visits) {
+    if(visits == undefined){
+      setKeyValue("visits", 1);
+    } else {
+      setKeyValue("visits", visits + 1);
+    }
+    if (visits == 100) {
+    console.log("100 people have seen your work");
+  }
+  else if ((visits == 1000)) {
+    console.log("1,000 people have seen your work.");
+  }
+  else if ((visits == 1)) {
+  console.log("10,000 people have seen your work");
+  }
+    console.log(("Thank You so much For " + visits) + " visits");
+  });
+playSound("BaseAfterBase.mp3", true);
+playSound("BaseAfterBase.mp3");
 
-var currentCheckpoint = 0;
+var currentCheckpoint = 0 ;
 var currentGravity = 0;
-var currentSize = 0;
-var speedMultiplier = 1.9; //3.9
+var currentSize = 1.1;
+var speedMultiplier = 2.5; //2.5
 //
 //
 var respawnTimer = 0;
@@ -72,6 +95,7 @@ effectCircle2.scale = 0.0;
 //var jumpRing_1 = createSprite(2600, -400);
 
 var jumpRings = createGroup();
+jumpRings.add(createSprite(190, -88));
 jumpRings.add(createSprite(11750, -350));
 jumpRings.add(createSprite(13400, -780));
 jumpRings.add(createSprite(15100, -400));
@@ -160,9 +184,14 @@ player.setAnimation("Cube_idle");
 
 // MINI PORTALS /////////////////////////////////////////////////////////
 
+var miniPortals = createGroup();
 
+miniPortals.add(createSprite(22000, -300));
 
+miniPortals.add(createSprite(36000, -800));
 
+miniPortals.setAnimationEach("miniPortal");
+miniPortals.setScaleEach(2);
 
 // BIG PORTALS 
 
@@ -651,7 +680,438 @@ blockCollision.setVisibleEach(false);
 // HAZARDS ///////////////////////////////////////////////////////////////
 
 // Groups
+var spikes = createGroup();
+//var spikes_2 = createGroup();
 
+// Creating Sprites
+var spike1 = createSprite(1200,-200);
+spikes.add(spike1);
+var spike2 = createSprite(2000,-200);
+spikes.add(spike2);
+var spike3 = createSprite(3100, -300);
+spikes.add(spike3);
+var spike4 = createSprite(3885, -585);
+spikes.add(spike4);
+spike4.scale = 0.75;
+spike4.rotation = 90;
+var spike5 = createSprite(3715, -585);
+spikes.add(spike5);
+spike5.scale = 0.75;
+spike5.rotation = 270;
+var spike6 = createSprite(3710, -180);
+spikes.add(spike6);
+spike6.scale = 0.5;
+var spike7 = createSprite(3890, -180);
+spikes.add(spike7);
+spike7.scale = 0.5;
+var spike8 = createSprite(2800, -700);
+spikes.add(spike8);
+spike8.rotation = 180;
+var spike9 = createSprite(2900, -700);
+spikes.add(spike9);
+spike9.rotation = 180;
+
+var spike10 = createSprite(5100, -200);
+spikes.add(spike10);
+var spike11 = createSprite(5190, -200);
+spikes.add(spike11);
+var spike12 = createSprite(5280, -200);
+spikes.add(spike12);
+var spike13 = createSprite(5370, -200);
+spikes.add(spike13);
+var spike14 = createSprite(5900, -200);
+spikes.add(spike14);
+var spike15 = createSprite(5990, -200);
+spikes.add(spike15);
+
+var spike16 = createSprite(6500, -200);
+spikes.add(spike16);
+var spike17 = createSprite(7100, -190);
+spikes.add(spike17);
+spike17.scale = 0.9;
+var spike18 = createSprite(7200, -190);
+spikes.add(spike18);
+spike18.scale = 0.9;
+var spike19 = createSprite(7800, -185);
+spikes.add(spike19);
+spike19.scale = 0.75;
+var spike20 = createSprite(7900, -185);
+spikes.add(spike20);
+spike20.scale = 0.75;
+var spike21 = createSprite(8000, -185);
+spikes.add(spike21);
+spike21.scale = 0.75;
+var spike22 = createSprite(8100, -185);
+spikes.add(spike22);
+spike22.scale = 0.75;
+var spike23 = createSprite(8200, -185);
+spikes.add(spike23);
+spike23.scale = 0.75;
+var spike24 = createSprite(8300, -185);
+spikes.add(spike24);
+spike24.scale = 0.75;
+var spike25 = createSprite(8400, -185);
+spikes.add(spike25);
+spike25.scale = 0.75;
+var spike26 = createSprite(8500, -185);
+spikes.add(spike26);
+spike26.scale = 0.75;
+var spike27 = createSprite(8700, -200);
+spikes.add(spike27);
+var spike28 = createSprite(8800, -200);
+spikes.add(spike28);
+var spike29 = createSprite(8900, -200);
+spikes.add(spike29);
+var spike30 = createSprite(9000, -200);
+spikes.add(spike30);
+var spike31 = createSprite(9080, -180);
+spikes.add(spike31);
+spike31.scale = 0.8;
+
+var spike32 = createSprite(6000, -600);
+spikes.add(spike32);
+spike32.rotation = 180;
+var spike33 = createSprite(5900, -600);
+spikes.add(spike33);
+spike33.rotation = 180;
+
+var spike34 = createSprite(6750, -700);
+spikes.add(spike34);
+spike34.rotation = 180;
+var spike35 = createSprite(6850, -700);
+spikes.add(spike35);
+spike35.rotation = 180;
+var spike36 = createSprite(7550, -800);
+spikes.add(spike36);
+spike36.rotation = 180;
+var spike37 = createSprite(7450, -800);
+spikes.add(spike37);
+spike37.rotation = 180;
+var spike38 = createSprite(10100, -550);
+spikes.add(spike38);
+spike38.rotation = 180;
+var spike39 = createSprite(10000, -550);
+spikes.add(spike39);
+spike39.rotation = 180;
+var spike40 = createSprite(9900, -550);
+spikes.add(spike40);
+spike40.rotation = 180;
+var spike41 = createSprite(9800, -550);
+spikes.add(spike41);
+spike41.rotation = 180;
+var spike42 = createSprite(9700, -550);
+spikes.add(spike42);
+spike42.rotation = 180;
+var spike43 = createSprite(10200, -550);
+spikes.add(spike43);
+spike43.rotation = 180;
+var spike44 = createSprite(10300, -550);
+spikes.add(spike44);
+spike44.rotation = 180;
+var spike45 = createSprite(10400, -550);
+spikes.add(spike45);
+spike45.rotation = 180;
+var spike46 = createSprite(10500, -550);
+spikes.add(spike46);
+spike46.rotation = 180;
+var spike47 = createSprite(10600, -550);
+spikes.add(spike47);
+spike47.rotation = 180;
+
+var spike48 = createSprite(11600, -190);
+spikes.add(spike48);
+spike48.scale = 0.75;
+var spike49 = createSprite(11700, -200);
+spikes.add(spike49);
+var spike50 = createSprite(11800, -200);
+spikes.add(spike50);
+var spike51 = createSprite(11900, -190);
+spikes.add(spike51);
+spike51.scale = 0.75;
+var spike52 = createSprite(12400, -200);
+spikes.add(spike52);
+var spike53 = createSprite(12500, -190);
+spikes.add(spike53);
+spike53.scale = 0.75;
+var spike54 = createSprite(13400, -200);
+spikes.add(spike54);
+var spike55 = createSprite(13300, -200);
+spikes.add(spike55);
+var spike56 = createSprite(13100, -200);
+spikes.add(spike56);
+var spike57 = createSprite(13000, -190);
+spikes.add(spike57);
+spike57.scale = 0.75;
+
+var spike58 = createSprite(13600, -615);
+spikes.add(spike58);
+var spike59 = createSprite(13500, -615);
+spikes.add(spike59);
+spikes.add(createSprite(13700, -180));
+spikes.add(createSprite(13800, -200));
+spikes.add(createSprite(13900, -180));
+spikes.add(createSprite(14000, -200));
+spikes.add(createSprite(14100, -180));
+spikes.add(createSprite(14200, -200));
+spikes.add(createSprite(14300, -180));
+spikes.add(createSprite(14400, -570));
+
+spikes.add(createSprite(15020, -200));
+spikes.add(createSprite(15180, -200));
+spikes.add(createSprite(15100, -200));
+
+var spike60 = createSprite(15000, -585);
+spikes.add(spike60);
+spike60.rotation = 180;
+spike60.scale = 0.85;
+var spike61 = createSprite(14900, -585);
+spikes.add(spike61);
+spike61.rotation = 180;
+spike61.scale = 0.85;
+var spike62 = createSprite(15100, -585);
+spikes.add(spike62);
+spike62.rotation = 180;
+spike62.scale = 0.85;
+var spike63 = createSprite(15200, -585);
+spikes.add(spike63);
+spike63.rotation = 180;
+spike63.scale = 0.85;
+var spike64 = createSprite(15300, -585);
+spikes.add(spike64);
+spike64.rotation = 180;
+spike64.scale = 0.85;
+
+spikes.add(createSprite(16400, -200));
+spikes.add(createSprite(16600, -200));
+spikes.add(createSprite(16700, -200));
+spikes.add(createSprite(17200, -500));
+
+var spike65 = createSprite(17000, -800);
+spikes.add(spike65);
+spike65.rotation = 180;
+var spike66 = createSprite(16900, -800);
+spikes.add(spike66);
+spike66.rotation = 180;
+var spike67 = createSprite(18100, -700);
+spikes.add(spike67);
+spike67.rotation = 180;
+var spike68 = createSprite(18200, -700);
+spikes.add(spike68);
+spike68.rotation = 180;
+var spike69 = createSprite(20300, -600);
+spikes.add(spike69);
+spike69.rotation = 180;
+
+spikes.add(createSprite(17300, -200));
+spikes.add(createSprite(17400, -200));
+spikes.add(createSprite(17500, -200));
+spikes.add(createSprite(17600, -200));
+spikes.add(createSprite(17700, -175));
+
+spikes.add(createSprite(20300, -175));
+spikes.add(createSprite(20200, -200));
+spikes.add(createSprite(20100, -200));
+spikes.add(createSprite(20000, -200));
+spikes.add(createSprite(19900, -175));
+
+spikes.add(createSprite(20815, -200));
+spikes.add(createSprite(20900, -200));
+spikes.add(createSprite(20985, -200));
+
+spikes.add(createSprite(22400, -175));
+spikes.add(createSprite(22850, -200));
+var spike70 = createSprite(22850, -400);
+spikes.add(spike70);
+spike70.rotation = 180;
+var spike71 = createSprite(23350, -400);
+spikes.add(spike71);
+spike71.rotation = 180;
+var spike72 = createSprite(23450, -400);
+spikes.add(spike72);
+spike72.rotation = 180;
+
+spikes.add(createSprite(23350, -200));
+spikes.add(createSprite(23450, -150));
+spikes.add(createSprite(23800, -200));
+
+var spike73 = createSprite(24500, -400);
+spikes.add(spike73);
+spike73.rotation = 270;
+var spike74 = createSprite(24400, -350);
+spikes.add(spike74);
+spike74.rotation = 270;
+var spike75 = createSprite(24400, -300);
+spikes.add(spike75);
+spike75.rotation = 90;
+var spike76 = createSprite(24500, -350);
+spikes.add(spike76);
+spike76.rotation = 90;
+
+var spike77 = createSprite(24800, -500);
+spikes.add(spike77);
+spike77.rotation = 270;
+var spike78 = createSprite(24800, -450);
+spikes.add(spike78);
+spike78.rotation = 90;
+var spike79 = createSprite(24700, -400);
+spikes.add(spike79);
+spike79.rotation = 90;
+var spike80 = createSprite(24700, -450);
+spikes.add(spike80);
+spike80.rotation = 270;
+var spike81 = createSprite(25500, -800);
+spikes.add(spike81);
+spike81.rotation = 180;
+var spike82 = createSprite(25600, -800);
+spikes.add(spike82);
+spike82.rotation = 180;
+
+spikes.add(createSprite(25000, -200));
+spikes.add(createSprite(25100, -200));
+spikes.add(createSprite(25200, -200));
+spikes.add(createSprite(25300, -200));
+spikes.add(createSprite(25400, -200));
+
+spikes.add(createSprite(26900, -175));
+spikes.add(createSprite(27000, -200));
+spikes.add(createSprite(27100, -175));
+spikes.add(createSprite(27200, -200));
+spikes.add(createSprite(27300, -175));
+spikes.add(createSprite(27400, -200));
+spikes.add(createSprite(27500, -175));
+spikes.add(createSprite(27600, -200));
+spikes.add(createSprite(27700, -175));
+spikes.add(createSprite(27800, -200));
+spikes.add(createSprite(27900, -175));
+spikes.add(createSprite(28000, -200));
+spikes.add(createSprite(28100, -175));
+spikes.add(createSprite(28200, -200));
+spikes.add(createSprite(28300, -175));
+spikes.add(createSprite(28400, -200));
+spikes.add(createSprite(28500, -175));
+
+spikes.add(createSprite(29410, -185));
+spikes.add(createSprite(29500, -200));
+spikes.add(createSprite(29590, -185));
+
+spikes.add(createSprite(29910, -185));
+spikes.add(createSprite(30000, -200));
+spikes.add(createSprite(30090, -185));
+
+spikes.add(createSprite(32000, -200));
+spikes.add(createSprite(32100, -200));
+spikes.add(createSprite(32200, -200));
+
+spikes.add(createSprite(32700, -200));
+spikes.add(createSprite(32780, -200));
+spikes.add(createSprite(32860, -200));
+spikes.add(createSprite(32940, -200));
+
+spikes.add(createSprite(31500, -300));
+spikes.add(createSprite(31000, -200));
+
+var spike83 = createSprite(33200, -600);
+spikes.add(spike83);
+spike83.rotation = 180;
+var spike84 = createSprite(33300, -600);
+spikes.add(spike84);
+spike84.rotation = 180;
+var spike85 = createSprite(33400, -600);
+spikes.add(spike85);
+spike85.rotation = 180;
+var spike86 = createSprite(33500, -600);
+spikes.add(spike86);
+spike86.rotation = 180;
+var spike87 = createSprite(33600, -600);
+spikes.add(spike87);
+spike87.rotation = 180;
+var spike88 = createSprite(34910, -400);
+spikes.add(spike88);
+spike88.rotation = 270;
+spike88.scale = 0.9;
+
+spikes.add(createSprite(33950, -200));
+spikes.add(createSprite(34050, -200));
+
+spikes.add(createSprite(34400, -185));
+spikes.add(createSprite(34500, -200));
+spikes.add(createSprite(34600, -200));
+spikes.add(createSprite(34700, -200));
+spikes.add(createSprite(34800, -200));
+spikes.add(createSprite(34900, -185));
+
+spikes.add(createSprite(35100, -600));
+spikes.add(createSprite(35200, -600));
+spikes.add(createSprite(35300, -600));
+
+var spike89 = createSprite(35490, -400);
+spikes.add(spike89);
+spike89.rotation = 90;
+spike89.scale = 0.9;
+
+var spike90 = createSprite(35550, -1000);
+spikes.add(spike90);
+spike90.rotation = 180;
+
+var spike90 = createSprite(35650, -1000);
+spikes.add(spike90);
+spike90.rotation = 180;
+
+spikes.add(createSprite(35500, -180));
+spikes.add(createSprite(35600, -200));
+spikes.add(createSprite(35700, -200));
+spikes.add(createSprite(35800, -200));
+spikes.add(createSprite(35900, -180));
+
+spikes.add(createSprite(36000, -600));
+
+spikes.add(createSprite(36400, -180));
+spikes.add(createSprite(36480, -180));
+spikes.add(createSprite(36560, -180));
+
+spikes.add(createSprite(37300, -1300));
+var spike91 = createSprite(37300, -1500);
+spikes.add(spike91);
+spike91.rotation = 180;
+spikes.add(createSprite(37300, -1600));
+
+spikes.add(createSprite(37900, -900));
+spikes.add(createSprite(38000, -900));
+spikes.add(createSprite(38100, -900));
+spikes.add(createSprite(38200, -900));
+spikes.add(createSprite(38300, -900));
+
+spikes.add(createSprite(37500, -200));
+spikes.add(createSprite(37700, -200));
+spikes.add(createSprite(37900, -200));
+spikes.add(createSprite(38100, -200));
+spikes.add(createSprite(38300, -200));
+spikes.add(createSprite(38500, -200));
+
+spikes.add(createSprite(39000, -200));
+spikes.add(createSprite(39080, -200));
+spikes.add(createSprite(39160, -200));
+spikes.add(createSprite(39240, -200));
+spikes.add(createSprite(39320, -200));
+
+spikes.add(createSprite(40300, -200));
+
+spikes.add(createSprite(40700, -200));
+spikes.add(createSprite(40790, -180));
+
+spikes.add(createSprite(41490, -200));
+spikes.add(createSprite(41400, -180));
+
+var spike92 = createSprite(42300, -200);
+spikes.add(spike92);
+var spike93 = createSprite(42390, -200);
+spikes.add(spike93);
+var spike94 = createSprite(42480, -200);
+spikes.add(spike94);
+
+// Group Attributes
+spikes.setAnimationEach("Spike1");
+spikes.setColliderEach("circle", 0, 20, 35);
 
 // FINISH LINE ////////////////////////////////////////////////////
 var finishLine = createSprite(43100, -500);
@@ -687,7 +1147,6 @@ arrowKeysJump.setAnimation("arrowKeysJump");
 
 
 
-/////////////////////////////////////////////////////////////////////////
 // DEBUG
 player.debug = false;
 groundObj.debug = false;
@@ -696,7 +1155,7 @@ backgroundObj.debug = false;
 backgroundObj2.debug = false;
 
 
-// DRAW /////////////////////////////////////////////////////////////////
+// DRAW 
 function draw() {
   // draw background
 background("white");
@@ -732,7 +1191,6 @@ drawSprites();
   // other
 
 }
-///////////////////////////////////////////////////////////////////////
 
 
 // Create your functions here
@@ -843,6 +1301,9 @@ function finishGame() {
     groundObj.y = -10000;
     groundObj2.y = -10000;
     groundLine.y = -10000;
+    spike92.y = -10000;
+    spike93.y = -10000;
+    spike94.y = -10000;
     
     textFont("Impact");
     stroke("black");
@@ -851,7 +1312,7 @@ function finishGame() {
     textSize(90);
     text("Level Complete!", camera.x - 400, camera.y - 200);
     textSize(70);
-    text("Thanks for playing.", camera.x - 400, camera.y - 100);
+    text("Credits to my friend Alex for helping me verify this level", camera.x - 400, camera.y - 100);
     textSize(50);
     text("DEATHS:  " + deathCount, camera.x - 400, camera.y + 100);
     text("TIME TAKEN:  " + timeTaken + " SECONDS", camera.x - 400, camera.y + 200);
@@ -946,6 +1407,14 @@ function playerGravityPortals() {
 
 function playerSizePortals() {
   // MINI PORTAL
+  if (miniPortals.isTouching(player) && currentSize == 0) {
+    playSound("sound://category_poof/puzzle_game_poof_b_02.mp3", false);
+    
+    effectCircle.tint = "rgb(255, 50, 255)";
+    effectCircle.scale = 1.75; 
+    
+    currentSize = 1;
+  }
   // BIG PORTAL
    if (bigPortals.isTouching(player) && currentSize == 1) {
    playSound("sound://category_poof/puzzle_game_poof_b_01.mp3", false);
@@ -1058,7 +1527,7 @@ function playerRespawn() {
   }
   ////////////////////////////////////////////////////////////////////////
   // Hazard detection
-  if (keyDown("r") && respawnTimer > maxRespawn) {
+  if (spikes.isTouching(player) && respawnTimer > maxRespawn) {
      if (debugCollision == 0) {
       playSound("ExplodeSound.mp3");
       respawnCircle.tint = "rgb(255, 255, 0)";
@@ -1361,10 +1830,8 @@ function infiniteBackground() {
     backgroundObj2.x = backgroundObj2.x - 3200;
   }
   if (keyWentDown("space")) {
-    speedMultiplier = 2.5;
+    speedMultiplier = 3.5;
   } else {
-    speedMultiplier = 1.5;
+    speedMultiplier = 2.5;
   }
 }
-
-
